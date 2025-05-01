@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float currentEnergy;
     public float energyCost = 1f;
     public float regenAmount = 0.01f;
+    public float regenTime = 1f;
 
     public TMP_Text locText;
     public TMP_Text description;
@@ -53,8 +54,20 @@ public class GameManager : MonoBehaviour
     {
          
         locText.text = loc.ToString("0");
-       
-        
+        if(currentEnergy > 70f)
+        {
+            energyBar.color = Color.green;
+        }
+        else if(currentEnergy > 40f)
+        {
+            energyBar.color = Color.yellow;
+        }
+        else
+        {
+            energyBar.color = Color.red;
+        }
+
+
         if (autocoding) //Noooooob :D
         {
             autoCodeBtn.gameObject.SetActive(false);
@@ -69,6 +82,7 @@ public class GameManager : MonoBehaviour
             loc += skill;
             //Test
             currentEnergy -= energyCost;
+            
 
         }
         else
@@ -123,7 +137,7 @@ public class GameManager : MonoBehaviour
     {
         while (!isCoding)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(regenTime);
             if (currentEnergy < 100f)
             {
                 currentEnergy += regenAmount;
