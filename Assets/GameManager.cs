@@ -33,11 +33,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(WelcomeMsg());
         StartCoroutine(Regen());
         //Disable components by default
         autoCodeBtn.gameObject.SetActive(false);
         skillPanel.gameObject.SetActive(false);
-        actionsPanel.gameObject.SetActive(false);
         //Event listeners
         lvl1SkillBtn.onClick.AddListener(()=>SkillUpgrade(1.10f));
 
@@ -87,7 +87,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            actionsPanel.gameObject.SetActive(true);
             description.text = "Your energy is drained";
         }
             isCoding = false;
@@ -119,6 +118,14 @@ public class GameManager : MonoBehaviour
         
         description.text = "Your LOCrate is now "+skill.ToString("F2");
         StartCoroutine(DescriptionChange());
+    }
+    public IEnumerator WelcomeMsg()
+    {
+        description.text = "Welcome to gitKing";
+        yield return new WaitForSeconds(2f);
+        description.text = "Push Code button to begin writing code";
+        yield return new WaitForSeconds(2f);
+        description.text = "...but be careful if you code to much without rest you will be exhausted...";
     }
     public IEnumerator Autocode()
     {
