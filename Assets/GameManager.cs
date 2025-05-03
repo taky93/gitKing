@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text description;
     //Buttons
     public Button autoCodeBtn;
-    public Button lvl1SkillBtn;
+    //public Button lvl1SkillBtn;
     //Panels
     public GameObject skillPanel;
     public GameObject actionsPanel;
@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         autoCodeBtn.gameObject.SetActive(false);
         skillPanel.gameObject.SetActive(false);
         //Event listeners
-        lvl1SkillBtn.onClick.AddListener(()=>SkillUpgrade(1.10f));
+        //lvl1SkillBtn.onClick.AddListener(()=>SkillUpgrade(1.10f));
 
         currentEnergy=maxEnergy;
     }
