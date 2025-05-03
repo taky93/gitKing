@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     }
     void UpdateUI()
     {
+        Debug.Log(currentEnergy);
          
         locText.text = loc.ToString("0");
         if(currentEnergy > 70f)
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator Autocode()
     {
+        
         while (autocoding) {
             loc += skill;
             yield return new WaitForSeconds(timeToWrite);
@@ -144,6 +146,13 @@ public class GameManager : MonoBehaviour
     {
         while (!isCoding)
         {
+            if (autocoding)
+            {
+                regenAmount = 1f;
+            }
+            else {
+                regenAmount = 2f;
+            }
             yield return new WaitForSeconds(regenTime);
             if (currentEnergy < 100f)
             {
