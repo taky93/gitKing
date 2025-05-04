@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public float regenAmount = 0.01f;
     public float regenTime = 1f;
 
+
     public TMP_Text locText;
     public TMP_Text description;
     //Buttons
